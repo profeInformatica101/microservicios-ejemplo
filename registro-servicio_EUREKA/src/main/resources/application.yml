@@ -1,0 +1,18 @@
+spring:
+ config:
+    import: optional:configserver:http://root:s3cr3t@localhost:8888
+ cloud:
+  config:
+   enabled: true # false -> significa que la aplicación no intentará conectarse a un servidor de Spring Cloud Config para obtener su configuración al iniciar.
+   
+server:
+  port: 8761
+
+eureka:
+ instance:
+  hostname: localhost 
+ client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}
